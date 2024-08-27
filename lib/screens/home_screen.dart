@@ -73,7 +73,6 @@ class HomeScreenState extends State<HomeScreen> {
       audioPlayer.play(UrlSource(songs[currentSongIndex].preview!));
     } else {
       setState(() {
-        // Optionally reset or handle end of list
         currentSongIndex = 0;
       });
     }
@@ -102,24 +101,28 @@ class HomeScreenState extends State<HomeScreen> {
                       }
                     },
                     background: Container(color: Theme.of(context).colorScheme.surface),
-                    /*Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center, 
-                        children: [
-                          Image.network(songs[currentSongIndex+1].image, width: 250, height: 250,),
-                          const SizedBox(height: 20),
-                          Text(songs[currentSongIndex+1].name)
-                        ],
-                      ),
-                    ),*/
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Container(
+                            margin: const EdgeInsets.only(bottom: 10.0),
+                            child: Text(
+                              "Songs from",
+                              style: Theme.of(context).textTheme.titleSmall,
+                            ),
+                          ),
+                          Image.asset(
+                            "lib/assets/Spotify_Logo.png", 
+                            width: 100, 
+                            height: 100,
+                            alignment: Alignment.topCenter,
+                          ),
                           Image.network(songs[currentSongIndex].image, width: 250, height: 250,),
                           const SizedBox(height: 20,),
                           Text(
                             songs[currentSongIndex].name,
+                            textAlign: TextAlign.center,
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                           const SizedBox(height: 10,),
@@ -143,7 +146,7 @@ class HomeScreenState extends State<HomeScreen> {
                                 iconSize: 35,
                               )
                             ],
-                          )
+                          ),
                         ],
                       )
                     ),

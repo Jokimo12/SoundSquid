@@ -12,6 +12,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   final SpotifyAuthService spotifyAuthService = SpotifyAuthService();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
         future: spotifyAuthService.checkAuthenticatedUser(), 
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           if(snapshot.connectionState == ConnectionState.waiting) {
-            return Scaffold(
+            return const Scaffold(
               body: Center(
                 child: CircularProgressIndicator(),
               )
